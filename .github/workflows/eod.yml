@@ -5,6 +5,9 @@ on:
     - cron: '0 9 * * 1-5'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run-eod:
     runs-on: ubuntu-latest
@@ -16,9 +19,11 @@ jobs:
       - run: pip install yfinance pandas schedule
       - run: python scheduler.py eod
       - run: python export_report.py
-      - run: |
+      - name: Commit results
+        run: |
           git config user.name "IDX Bot"
           git config user.email "bot@idx-trader.local"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add trading.db reports/
           git diff --cached --quiet || git commit -m "eod: auto-run $(date +'%Y-%m-%d')"
           git push
