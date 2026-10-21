@@ -1,8 +1,8 @@
-# IDX Trading Bot Report — 2026-10-20_14-07-52
+# IDX Trading Bot Report — 2026-10-21_14-21-32
 
 ## EOD
-- Value: Rp101,456,546
-- Return: +1.46%
+- Value: Rp102,761,615
+- Return: +2.76%
 - Cash: Rp39,526,371
 - Holdings: 10
 - Total Trades: 16
